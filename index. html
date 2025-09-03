@@ -1,0 +1,237 @@
+<!-- Save as cars.html and open in your browser -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Basic Cars Listing</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#0ea5a4;
+      --shadow: 0 6px 18px rgba(16,24,40,0.08);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:20px;
+    }
+    header h1{
+      margin:0;
+      font-size:1.5rem;
+      letter-spacing:-0.02em;
+    }
+    header p{ margin:0; color:var(--muted); font-size:0.95rem; }
+    .controls{
+      margin-left:auto;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .search{
+      padding:8px 12px;
+      border-radius:8px;
+      border:1px solid #e6eef6;
+      background:transparent;
+      min-width:180px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap:18px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition:transform .16s ease, box-shadow .16s ease;
+      min-height:320px;
+    }
+    .card:hover{ transform:translateY(-6px); box-shadow: 0 14px 30px rgba(16,24,40,0.12); }
+
+    .card .photo{
+      height:150px;
+      background-size:cover;
+      background-position:center;
+    }
+    .card .content{
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      flex:1;
+    }
+    .title-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+    }
+    .title-row h2{
+      font-size:1.05rem;
+      margin:0;
+    }
+    .meta{
+      color:var(--muted);
+      font-size:0.87rem;
+    }
+    .desc{
+      color:#111827;
+      font-size:0.95rem;
+      line-height:1.3;
+      margin:0;
+      flex:1;
+    }
+
+    .footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-top:1px solid #f1f5f9;
+      background:linear-gradient(180deg, rgba(255,255,255,0), rgba(250,250,252,0.4));
+    }
+    .price{
+      font-weight:700;
+    }
+    .btn{
+      background:var(--accent);
+      color:white;
+      padding:8px 12px;
+      border-radius:10px;
+      text-decoration:none;
+      font-size:0.9rem;
+      display:inline-block;
+    }
+
+    /* small utilities */
+    .badge{
+      background:#eefbf9;
+      color:#065f5d;
+      padding:4px 8px;
+      border-radius:999px;
+      font-size:0.78rem;
+      border:1px solid rgba(6,95,93,0.06);
+    }
+
+    @media (max-width:420px){
+      header{ flex-direction:column; align-items:flex-start; gap:8px; }
+      .controls{ margin-left:0; width:100%; }
+      .search{ width:100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Cars Catalogue</h1>
+      <p>Simple HTML demo showing a few car entries — edit or add more below.</p>
+    </div>
+
+    <div class="controls" role="search">
+      <input class="search" placeholder="Search by model, year or price..." aria-label="Search cars" />
+      <div class="badge" title="Total cars shown">3</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid" aria-live="polite">
+      <!-- Card 1 -->
+      <article class="card" aria-labelledby="car1-title">
+        <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1200&q=60');" role="img" aria-label="Red sports car"></div>
+        <div class="content">
+          <div class="title-row">
+            <h2 id="car1-title">Apex GT</h2>
+            <div class="meta">2022 • Coupe</div>
+          </div>
+          <p class="desc">A compact high-performance coupe with responsive handling and modern infotainment. Great daily driver with track capability.</p>
+          <div class="footer">
+            <div>
+              <div class="price">₹ 29,99,000</div>
+              <div class="meta" style="font-size:0.82rem;">Automatic • Petrol • 2-door</div>
+            </div>
+            <a class="btn" href="#" role="button">View</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card" aria-labelledby="car2-title">
+        <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=60');" role="img" aria-label="Blue family SUV"></div>
+        <div class="content">
+          <div class="title-row">
+            <h2 id="car2-title">Vista SUV</h2>
+            <div class="meta">2024 • SUV</div>
+          </div>
+          <p class="desc">Spacious 5-seater SUV with advanced safety systems and a large boot — built for families and long trips.</p>
+          <div class="footer">
+            <div>
+              <div class="price">₹ 38,50,000</div>
+              <div class="meta" style="font-size:0.82rem;">Automatic • Hybrid • 5-seat</div>
+            </div>
+            <a class="btn" href="#" role="button">View</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card" aria-labelledby="car3-title">
+        <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=60');" role="img" aria-label="White hatchback"></div>
+        <div class="content">
+          <div class="title-row">
+            <h2 id="car3-title">Metro Hatch</h2>
+            <div class="meta">2021 • Hatchback</div>
+          </div>
+          <p class="desc">Economical hatchback with excellent fuel efficiency and easy city maneuvering — ideal for urban commuters.</p>
+          <div class="footer">
+            <div>
+              <div class="price">₹ 8,49,000</div>
+              <div class="meta" style="font-size:0.82rem;">Manual • Petrol • 5-seat</div>
+            </div>
+            <a class="btn" href="#" role="button">View</a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    // small interactive bits (optional)
+    const searchInput = document.querySelector('.search');
+    const cards = Array.from(document.querySelectorAll('.card'));
+
+    function normalize(s){ return s.trim().toLowerCase(); }
+
+    searchInput.addEventListener('input', () => {
+      const q = normalize(searchInput.value);
+      let visible = 0;
+      cards.forEach(card => {
+        const text = normalize(card.innerText || card.textContent || "");
+        const show = q === "" || text.includes(q);
+        card.style.display = show ? '' : 'none';
+        if(show) visible++;
+      });
+      // update badge count
+      document.querySelector('.badge').textContent = visible;
+    });
+  </script>
+</body>
+</html>
